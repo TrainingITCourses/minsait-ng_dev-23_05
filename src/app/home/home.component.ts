@@ -15,14 +15,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  isCheap(activity: any): boolean {
-    return activity.price < 100;
-  }
-
-  getClasses(activity: any): string {
-    return activity.ageCategory;
-  }
-
   onButtonClick() {
     this.sortOrder = this.sortOrder * -1;
     this.sortActivities();

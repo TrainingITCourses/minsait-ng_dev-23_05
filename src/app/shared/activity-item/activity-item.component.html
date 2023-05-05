@@ -1,0 +1,10 @@
+<span *ngIf="activity">
+  <span>{{ activity.title | titlecase }}</span>
+  <span> 📅 {{ activity.date | date : "dd-MMM-yy" }}</span>
+  <span *ngIf="isCheap(activity); else expensive"> 🤑 </span>
+  <ng-template #expensive>
+    <span> 💸 </span>
+  </ng-template>
+  <span>{{ activity.price | currency : activity.currency }}</span>
+  <span [class]="getClasses(activity)">{{ activity.ageCategory }}</span>
+</span>
