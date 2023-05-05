@@ -19,6 +19,7 @@ class Empresa {
 
   constructor(public nombre: string, public constitucion: Date = new Date()) {
     // this.nombre = nombre;
+    // this.constitucion = constitucion;
   }
 }
 
