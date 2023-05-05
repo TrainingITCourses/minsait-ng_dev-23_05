@@ -1,12 +1,18 @@
-<ul>
-  <li *ngFor="let activity of publishedActivities">
-    <span>{{ activity.title | titlecase }}</span>
-    <span> 📅 {{ activity.date | date : "dd-MMM-yy" }}</span>
-    <span *ngIf="activity.price <= 100; else expensive"> 🤑 </span>
-    <ng-template #expensive>
-      <span> 💸 </span>
-    </ng-template>
-    <span>{{ activity.price | currency : activity.currency }}</span>
-    <span [class]="activity.ageCategory">{{ activity.ageCategory }}</span>
-  </li>
-</ul>
+<article>
+  <header>
+    <h3>List of {{ publishedActivities.length }} activities</h3>
+    <button (click)="onButtonClick()">Sort by price 🔃</button>
+  </header>
+  <ul>
+    <li *ngFor="let activity of publishedActivities">
+      <span>{{ activity.title | titlecase }}</span>
+      <span> 📅 {{ activity.date | date : "dd-MMM-yy" }}</span>
+      <span *ngIf="isCheap(activity); else expensive"> 🤑 </span>
+      <ng-template #expensive>
+        <span> 💸 </span>
+      </ng-template>
+      <span>{{ activity.price | currency : activity.currency }}</span>
+      <span [class]="getClasses(activity)">{{ activity.ageCategory }}</span>
+    </li>
+  </ul>
+</article>
