@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onButtonClick() {
+  onSort() {
     this.sortOrder = this.sortOrder * -1;
     this.sortActivities();
   }

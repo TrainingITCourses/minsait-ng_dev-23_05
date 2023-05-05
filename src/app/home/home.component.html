@@ -1,10 +1,9 @@
 <article>
-  <!-- home-header -->
-  <app-home-header></app-home-header>
-  <header>
-    <h3>List of {{ publishedActivities.length }} activities</h3>
-    <button (click)="onButtonClick()">Sort by price 🔃</button>
-  </header>
+  <app-home-header
+    [numberOfActivities]="publishedActivities.length"
+    (sort)="onSort()"
+  >
+  </app-home-header>
   <ul>
     <li *ngFor="let a of publishedActivities">
       <app-activity-item [activity]="a"></app-activity-item>
