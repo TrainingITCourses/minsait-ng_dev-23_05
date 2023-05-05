@@ -5,8 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  getYear(): number {
-    return new Date().getFullYear();
-  }
-}
+export class AppComponent {}
