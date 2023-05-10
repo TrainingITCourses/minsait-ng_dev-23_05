@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./contact/contact.module').then((m) => m.ContactModule),
   },
+  {
+    path: 'activities',
+    loadChildren: () =>
+      import('./activities/activities.module').then((m) => m.ActivitiesModule),
+  },
 ];
 
 @NgModule({
