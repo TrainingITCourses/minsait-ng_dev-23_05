@@ -1,5 +1,9 @@
 <span *ngIf="activity">
-  <span>{{ activity.title | titlecase }}</span>
+  <span>
+    <a [routerLink]="['/', 'activities', activity.slug]">
+      {{ activity.title | titlecase }}
+    </a>
+  </span>
   <span> 📅 {{ activity.date | date : "dd-MMM-yy" }}</span>
   <span *ngIf="isCheap(activity); else expensive"> 🤑 </span>
   <ng-template #expensive>

@@ -14,7 +14,13 @@ const routes: Routes = [
         (m) => m.ActivityNewModule
       ),
   },
-  // new
+  {
+    path: ':slug',
+    loadChildren: () =>
+      import('./activity-detail/activity-detail.module').then(
+        (m) => m.ActivityDetailModule
+      ),
+  },
 ];
 
 @NgModule({

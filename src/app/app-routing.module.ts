@@ -23,6 +23,11 @@ const routes: Routes = [
       import('./activities/activities.module').then((m) => m.ActivitiesModule),
   },
   // path: 'activities/new',
+
+  // path: 'activities/grand-canyon-rafting',
+  // path: 'activities/cumbre-vieja-exploration',
+
+  // path: 'activities/:slug',
 ];
 
 @NgModule({
