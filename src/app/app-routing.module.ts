@@ -22,6 +22,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./activities/activities.module').then((m) => m.ActivitiesModule),
   },
+  // path: 'activities/new',
 ];
 
 @NgModule({

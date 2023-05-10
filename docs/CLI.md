@@ -13,4 +13,9 @@ ng g c about
 ng g m contact --routing
 # with its component
 ng g c contact
+
+# create a lazy module for activities
+ng g m activities --route=activities -m=app
+# create an inner route for activities/new
+ng g m activities/activity-new --route=new -m=activities
 ```

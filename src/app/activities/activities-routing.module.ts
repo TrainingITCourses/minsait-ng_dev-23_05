@@ -7,6 +7,14 @@ const routes: Routes = [
     path: '',
     component: ActivitiesComponent,
   },
+  {
+    path: 'new',
+    loadChildren: () =>
+      import('./activity-new/activity-new.module').then(
+        (m) => m.ActivityNewModule
+      ),
+  },
+  // new
 ];
 
 @NgModule({
