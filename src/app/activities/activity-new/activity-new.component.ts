@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivitiesService } from 'src/app/data/activities.service';
 
 @Component({
@@ -16,9 +16,9 @@ export class ActivityNewComponent implements OnInit {
     formBuilder: FormBuilder
   ) {
     this.form = formBuilder.group({
-      title: '',
-      location: '',
-      price: 99,
+      title: ['Curso', Validators.required],
+      location: ['', Validators.required],
+      price: [99, Validators.min(0)],
       ageCategory: 'child',
     });
   }

@@ -9,6 +9,7 @@
         type="text"
         placeholder="El título de la actividad"
         formControlName="title"
+        [attr.aria-invalid]="form.controls['title'].invalid"
       />
     </div>
     <div>
@@ -19,11 +20,18 @@
         type="text"
         placeholder="El lugar de la actividad"
         formControlName="location"
+        [attr.aria-invalid]="form.controls['location'].invalid"
       />
     </div>
     <div>
       <label for="price">Price</label>
-      <input id="price" name="price" type="number" formControlName="price" />
+      <input
+        id="price"
+        name="price"
+        type="number"
+        formControlName="price"
+        [attr.aria-invalid]="form.controls['price'].invalid"
+      />
     </div>
     <div>
       <label for="ageCategory">Age Category</label>
@@ -34,7 +42,7 @@
       </select>
     </div>
   </fieldset>
-  <button (click)="onSubmit()">Add activity</button>
+  <button (click)="onSubmit()" [disabled]="form.invalid">Add activity</button>
 </form>
 <pre>
   {{ form.value | json }}
