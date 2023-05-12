@@ -1,1 +1,12 @@
-<h3>👁️ Detail of activity... {{ activitySlug }}</h3>
+<h3>👁️ Detail of activity</h3>
+<article>
+  <h3>{{ activity.title | uppercase }}</h3>
+  <p>
+    <span> 📅 Date: </span
+    ><span>{{ activity.date | date : "yyyy-MMM-dd" }}</span>
+  </p>
+  <p>
+    <span> 📌 Location: </span><span>{{ activity.location }}</span>
+  </p>
+  <small>{{ activitySlug }}</small>
+</article>
