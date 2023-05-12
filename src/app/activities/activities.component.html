@@ -1,2 +1,5 @@
 <h3>➡️ Activities management</h3>
+<ul>
+  <li *ngFor="let a of allActivities">{{ a.title }} - {{ a.state }}</li>
+</ul>
 <button routerLink="new">Add Activity</button>
