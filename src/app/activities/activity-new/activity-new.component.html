@@ -1,1 +1,41 @@
-<p>activity-new works!</p>
+<h3>Add a new activity</h3>
+<form [formGroup]="form">
+  <fieldset>
+    <div>
+      <label for="title">Title</label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        placeholder="El título de la actividad"
+        formControlName="title"
+      />
+    </div>
+    <div>
+      <label for="location">Location</label>
+      <input
+        id="location"
+        name="location"
+        type="text"
+        placeholder="El lugar de la actividad"
+        formControlName="location"
+      />
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" name="price" type="number" formControlName="price" />
+    </div>
+    <div>
+      <label for="ageCategory">Age Category</label>
+      <select id="ageCategory" name="ageCategory" formControlName="ageCategory">
+        <option *ngFor="let a of ageCategories" [value]="a.id">
+          {{ a.icon }} {{ a.caption }}
+        </option>
+      </select>
+    </div>
+  </fieldset>
+  <button (click)="onSubmit()">Add activity</button>
+</form>
+<pre>
+  {{ form.value | json }}
+</pre>

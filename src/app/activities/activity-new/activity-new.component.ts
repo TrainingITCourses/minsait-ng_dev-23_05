@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivitiesService } from 'src/app/data/activities.service';
 
 @Component({
@@ -7,12 +8,28 @@ import { ActivitiesService } from 'src/app/data/activities.service';
   styleUrls: ['./activity-new.component.css'],
 })
 export class ActivityNewComponent implements OnInit {
-  constructor(private activitiesService: ActivitiesService) {}
+  form: FormGroup;
+  ageCategories = this.activitiesService.getAgeCategories();
 
-  ngOnInit(): void {}
+  constructor(
+    private activitiesService: ActivitiesService,
+    formBuilder: FormBuilder
+  ) {
+    this.form = formBuilder.group({
+      title: '',
+      location: '',
+      price: 99,
+      ageCategory: 'child',
+    });
+  }
+
+  ngOnInit(): void {
+    //this.form = this.formBuilder.group({});
+  }
 
   onSubmit() {
-    console.log('Form submitted!');
+    const newActivity = this.form.value;
+    console.log('Form submitted!', newActivity);
     // this.activitiesService.postActivity();
   }
 }

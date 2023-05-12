@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ACTIVITIES } from './activities.data';
+import { ACTIVITIES, AGE_CATEGORIES } from './activities.data';
 import { Activity } from './activity.type';
 
 @Injectable({
@@ -43,5 +43,9 @@ export class ActivitiesService {
 
   postActivity(activity: Activity): void {
     this.activities.push(activity);
+  }
+
+  getAgeCategories() {
+    return AGE_CATEGORIES;
   }
 }
