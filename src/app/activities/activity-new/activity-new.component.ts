@@ -16,9 +16,16 @@ export class ActivityNewComponent implements OnInit {
     formBuilder: FormBuilder
   ) {
     this.form = formBuilder.group({
-      title: ['Curso', Validators.required],
-      location: ['', Validators.required],
-      price: [99, Validators.min(0)],
+      title: ['Curso', [Validators.required, Validators.minLength(6)]],
+      location: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(10),
+        ],
+      ],
+      price: [99, [Validators.min(0), Validators.max(999)]],
       ageCategory: 'child',
     });
   }
