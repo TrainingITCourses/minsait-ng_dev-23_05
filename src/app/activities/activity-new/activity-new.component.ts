@@ -21,7 +21,7 @@ export class ActivityNewComponent implements OnInit {
     formBuilder: FormBuilder
   ) {
     this.form = formBuilder.group({
-      title: ['Curso', [Validators.required, Validators.minLength(6)]],
+      title: ['', [Validators.required, Validators.minLength(6)]],
       location: [
         '',
         [

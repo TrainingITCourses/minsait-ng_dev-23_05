@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivitiesService } from '../data/activities.service';
 import { Activity } from '../data/activity.type';
@@ -10,11 +11,19 @@ import { Activity } from '../data/activity.type';
 export class ActivitiesComponent implements OnInit {
   allActivities: Activity[] = []; // this.activitiesService.getAllActivities();
 
-  constructor(private activitiesService: ActivitiesService) {
+  constructor(
+    private activitiesService: ActivitiesService,
+    private httpClient: HttpClient
+  ) {
     // this.allActivities = activitiesService.getAllActivities();
+    this.httpClient
+      .get<Activity[]>('http://localhost:3000/activities')
+      .subscribe((activities: Activity[]) => {
+        this.allActivities = activities;
+      });
   }
 
   ngOnInit(): void {
-    this.allActivities = this.activitiesService.getAllActivities();
+    // this.allActivities = this.activitiesService.getAllActivities();
   }
 }
