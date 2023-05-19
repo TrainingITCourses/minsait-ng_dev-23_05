@@ -66,6 +66,12 @@ export class ActivitiesService {
     this.activities.push(activity);
   }
 
+  postActivity$(activity: Activity): Observable<any> {
+    activity.slug = activity.title.toLowerCase().replace(/ /g, '-');
+    activity.currency = 'EUR';
+    return this.httpClient.post<Activity>(this.url, activity);
+  }
+
   getAgeCategories() {
     return AGE_CATEGORIES;
   }

@@ -110,6 +110,43 @@
       "price": 10,
       "ageCategory": "adult",
       "id": 672
+    },
+    {
+      "title": "Curso de Angular",
+      "location": "Online",
+      "price": 99,
+      "ageCategory": "adult",
+      "id": 673
+    },
+    {
+      "title": "tomar vermout",
+      "location": "la Coru",
+      "price": 15,
+      "ageCategory": "child",
+      "id": 674
+    },
+    {
+      "title": "Ir a la playa",
+      "location": "Orzán",
+      "price": 0,
+      "ageCategory": "family",
+      "id": 675
+    },
+    {
+      "title": "otra cosa",
+      "location": "no lo se",
+      "price": 99,
+      "ageCategory": "child",
+      "id": 676
+    },
+    {
+      "title": "Fin de semana",
+      "location": "en la ría",
+      "price": 99,
+      "ageCategory": "family",
+      "slug": "fin-de-semana",
+      "currency": "EUR",
+      "id": 677
     }
   ],
   "ageCategories": [

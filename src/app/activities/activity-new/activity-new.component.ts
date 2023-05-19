@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ActivitiesService } from 'src/app/data/activities.service';
 import {
   FormFeedbackService,
@@ -18,6 +19,7 @@ export class ActivityNewComponent implements OnInit {
 
   constructor(
     private activitiesService: ActivitiesService,
+    private router: Router,
     formBuilder: FormBuilder
   ) {
     this.form = formBuilder.group({
@@ -39,8 +41,11 @@ export class ActivityNewComponent implements OnInit {
 
   onSubmit() {
     const newActivity = this.form.value;
-    console.log('Form submitted!', newActivity);
-    // this.activitiesService.postActivity();
+    // this.activitiesService.postActivity(newActivity);
+    this.activitiesService.postActivity$(newActivity).subscribe(() => {
+      console.log('Form submitted!', newActivity);
+      this.router.navigate(['activities']);
+    });
   }
 
   hasErrors(fieldName: string): boolean {
