@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivitiesService } from 'src/app/data/activities.service';
+import {
+  FormFeedbackService,
+  hasErrors,
+} from 'src/app/data/form-feedback.service';
 
 @Component({
   selector: 'app-activity-new',
@@ -10,6 +14,7 @@ import { ActivitiesService } from 'src/app/data/activities.service';
 export class ActivityNewComponent implements OnInit {
   form: FormGroup;
   ageCategories = this.activitiesService.getAgeCategories();
+  private ffb = new FormFeedbackService();
 
   constructor(
     private activitiesService: ActivitiesService,
@@ -36,5 +41,13 @@ export class ActivityNewComponent implements OnInit {
     const newActivity = this.form.value;
     console.log('Form submitted!', newActivity);
     // this.activitiesService.postActivity();
+  }
+
+  hasErrors(fieldName: string): boolean {
+    return hasErrors(this.form, fieldName);
+  }
+
+  getErrorMessage(fieldName: string): string {
+    return this.ffb.getErrorMessage(this.form, fieldName);
   }
 }

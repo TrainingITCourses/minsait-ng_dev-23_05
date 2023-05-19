@@ -11,9 +11,9 @@
         formControlName="title"
         [attr.aria-invalid]="form.controls['title'].invalid"
       />
-      <small *ngIf="form.controls['title'].errors">{{
-        form.controls["title"].errors | json
-      }}</small>
+      <small *ngIf="hasErrors('title')">
+        {{ getErrorMessage("title") }}
+      </small>
     </div>
     <div>
       <label for="location">Location</label>
@@ -25,9 +25,9 @@
         formControlName="location"
         [attr.aria-invalid]="form.controls['location'].invalid"
       />
-      <small *ngIf="form.controls['location'].errors">{{
-        form.controls["location"].errors | json
-      }}</small>
+      <small *ngIf="hasErrors('location')">
+        {{ getErrorMessage("location") }}
+      </small>
     </div>
     <div>
       <label for="price">Price</label>
@@ -38,9 +38,9 @@
         formControlName="price"
         [attr.aria-invalid]="form.controls['price'].invalid"
       />
-      <small *ngIf="form.controls['price'].errors">{{
-        form.controls["price"].errors | json
-      }}</small>
+      <small *ngIf="hasErrors('price')">
+        {{ getErrorMessage("price") }}
+      </small>
     </div>
     <div>
       <label for="ageCategory">Age Category</label>
