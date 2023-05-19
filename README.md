@@ -18,7 +18,7 @@ npm install
 npm start
 ```
 
-## Angular innstallation and generation of a new project
+## Angular installation and generation of a new project
 
 ```bash
 node -v
@@ -53,8 +53,6 @@ npm start
 
 #### ⌨ VS Code Shortcuts
 
-TOP 10
-
 - `F1` :command list
 - `CTRL+P` : file
 - `CTRL+T` : search code
@@ -64,7 +62,7 @@ TOP 10
 - `CTRL+Ñ` : show hide terminal
 - `CTRL+B`: show hide navigation bar
 - `CTRL+K S` : save al files
-- `ALT+up|dawn` : move line
+- `ALT+up|down` : move line
 
 ---
 
