@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { ActivitiesService } from 'src/app/data/activities.service';
 import { Activity } from 'src/app/data/activity.type';
 
@@ -10,8 +11,8 @@ import { Activity } from 'src/app/data/activity.type';
 })
 export class ActivityDetailComponent implements OnInit {
   activitySlug: string = 'que-valiese-algo';
-  activity: Activity = this.activitiesService.emptyActivity;
-
+  //activity: Activity = this.activitiesService.emptyActivity;
+  activity$: Observable<Activity | undefined> = of(undefined);
   constructor(
     private route: ActivatedRoute,
     private activitiesService: ActivitiesService
@@ -19,6 +20,7 @@ export class ActivityDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activitySlug = this.route.snapshot.params['slug'];
-    this.activity = this.activitiesService.getBySlug(this.activitySlug);
+    //this.activity = this.activitiesService.getBySlug(this.activitySlug);
+    this.activity$ = this.activitiesService.getBySlug$(this.activitySlug);
   }
 }

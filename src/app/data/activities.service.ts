@@ -52,6 +52,12 @@ export class ActivitiesService {
     return this.activities.find((a) => a.slug === slug) ?? this.emptyActivity;
   }
 
+  getBySlug$(slug: string): Observable<Activity | undefined> {
+    return this.httpClient
+      .get<Activity[]>(this.url + '/?slug=' + slug)
+      .pipe(map((activities: Activity[]): Activity => activities[0]));
+  }
+
   sortByPrice(activities: Activity[], sortOrder: number): void {
     activities.sort((a, b) => (a.price - b.price) * sortOrder);
   }
