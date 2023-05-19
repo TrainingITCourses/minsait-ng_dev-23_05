@@ -30,9 +30,7 @@ export class ActivityNewComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    //this.form = this.formBuilder.group({});
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     const newActivity = this.form.value;
