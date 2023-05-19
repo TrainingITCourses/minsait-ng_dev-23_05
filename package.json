@@ -2,6 +2,7 @@
   "name": "minsait-ng-dev-23-05",
   "version": "0.0.0",
   "scripts": {
+    "api": "json-server-auth ./db/db.json -r ./db/rs.json",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
