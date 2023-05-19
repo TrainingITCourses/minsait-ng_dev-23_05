@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ACTIVITIES, AGE_CATEGORIES } from './activities.data';
 import { Activity } from './activity.type';
 
@@ -8,6 +8,7 @@ import { Activity } from './activity.type';
   providedIn: 'root',
 })
 export class ActivitiesService {
+  private url = 'http://localhost:3000/activities';
   private activities = ACTIVITIES;
   public emptyActivity: Activity = {
     id: 0,
@@ -32,11 +33,19 @@ export class ActivitiesService {
   }
 
   getAllActivities$(): Observable<Activity[]> {
-    return this.httpClient.get<Activity[]>('http://localhost:3000/activities');
+    return this.httpClient.get<Activity[]>(this.url);
   }
 
   getPublishedActivities(): Activity[] {
     return this.activities.filter((a) => a.state === 'published');
+  }
+
+  getPublishedActivities$(): Observable<Activity[]> {
+    return this.httpClient
+      .get<Activity[]>(this.url)
+      .pipe(
+        map((activities) => activities.filter((a) => a.state === 'published'))
+      );
   }
 
   getBySlug(slug: string): Activity {

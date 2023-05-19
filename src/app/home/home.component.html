@@ -6,7 +6,7 @@
   >
   </app-home-header>
   <ul>
-    <li *ngFor="let a of publishedActivities">
+    <li *ngFor="let a of publishedActivities$ | async">
       <app-activity-item [activity]="a"></app-activity-item>
     </li>
   </ul>

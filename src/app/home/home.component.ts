@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ActivitiesService } from '../data/activities.service';
 import { Activity } from '../data/activity.type';
 
@@ -9,11 +10,13 @@ import { Activity } from '../data/activity.type';
 })
 export class HomeComponent implements OnInit {
   publishedActivities: Activity[] = [];
+  publishedActivities$: Observable<Activity[]>;
 
   private sortOrder: number = 1;
 
   constructor(private activitiesService: ActivitiesService) {
     this.publishedActivities = activitiesService.getPublishedActivities();
+    this.publishedActivities$ = activitiesService.getPublishedActivities$();
   }
 
   ngOnInit(): void {}
