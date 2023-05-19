@@ -1,6 +1,7 @@
 <h3>➡️ Activities management</h3>
 <ul>
-  <li *ngFor="let a of allActivities">
+  <!-- <li *ngFor="let a of allActivities"> -->
+  <li *ngFor="let a of allActivities$ | async">
     <span>
       <a [routerLink]="[a.slug]">{{ a.title }}</a>
     </span>

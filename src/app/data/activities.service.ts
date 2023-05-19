@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ACTIVITIES, AGE_CATEGORIES } from './activities.data';
 import { Activity } from './activity.type';
 
@@ -23,10 +25,14 @@ export class ActivitiesService {
     userId: 0,
   };
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   getAllActivities(): Activity[] {
     return this.activities;
+  }
+
+  getAllActivities$(): Observable<Activity[]> {
+    return this.httpClient.get<Activity[]>('http://localhost:3000/activities');
   }
 
   getPublishedActivities(): Activity[] {
