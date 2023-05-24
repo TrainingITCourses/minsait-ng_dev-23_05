@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { ACTIVITIES, AGE_CATEGORIES } from './activities.data';
@@ -34,6 +34,11 @@ export class ActivitiesService {
 
   getAllActivities$(): Observable<Activity[]> {
     return this.httpClient.get<Activity[]>(this.url);
+  }
+
+  queryActivities$(query: string): Observable<Activity[]> {
+    const params = new HttpParams().append('q', query);
+    return this.httpClient.get<Activity[]>(this.url, { params });
   }
 
   getPublishedActivities(): Activity[] {
