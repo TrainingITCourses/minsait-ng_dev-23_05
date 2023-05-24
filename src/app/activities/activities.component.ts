@@ -15,6 +15,7 @@ import {
 } from 'rxjs';
 import { ActivitiesService } from '../data/activities.service';
 import { Activity } from '../data/activity.type';
+import { Store } from '../data/hub.service';
 
 @Component({
   selector: 'app-activities',
@@ -26,14 +27,17 @@ export class ActivitiesComponent implements OnInit, AfterViewInit {
   allActivities: Activity[] = [];
   // allActivities$: Observable<Activity[]> = this.activitiesService.getAllActivities$();
 
-  constructor(private activitiesService: ActivitiesService) {}
+  constructor(
+    private activitiesService: ActivitiesService,
+    private store: Store
+  ) {}
 
   ngAfterViewInit(): void {
     const source$ = fromEvent(this.searchInput.nativeElement, 'keyup');
     const value$ = source$.pipe(
       debounceTime(200),
       map((eventArg: any) => eventArg.target.value),
-      filter((value: string) => value.length > 3),
+      filter((value: string) => value.length > 1),
       distinctUntilChanged(),
       switchMap((searchTerm: string) =>
         this.activitiesService.queryActivities$(searchTerm)
@@ -42,7 +46,11 @@ export class ActivitiesComponent implements OnInit, AfterViewInit {
     value$.subscribe((activities) => {
       console.log('activities', activities);
       this.allActivities = activities;
+      // this.hub.foundActivities = activities;
+      // this.hub.foundActivities$.next(activities);
+      this.store.setState(activities);
     });
+
     // value$.subscribe((searchTerm: string) => {
     //   console.log('searchTerm', searchTerm);
     //   this.activitiesService

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from 'src/app/data/hub.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Activity Bookings';
+  //foundActivities: any[] = [];
+  activitiesCount: number = 0;
 
-  constructor() {}
+  constructor(private store: Store) {
+    // store.getState$().subscribe((activities) => {
+    //   this.foundActivities = activities;
+    // });
+    // store
+    //   .selectStateLength$()
+    //   .subscribe((length) => (this.activitiesCount = length));
+    store
+      .select$((state: any[]) => state.length)
+      .subscribe((length) => (this.activitiesCount = length));
+  }
 
   ngOnInit(): void {}
 }
